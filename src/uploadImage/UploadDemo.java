@@ -8,6 +8,13 @@ import java.io.File;
  * Created by 佳琦 on 2016/2/25.
  */
 public class UploadDemo {
+    /**
+     *
+     * @param file 文件流
+     * @param copyPath 被复制的文件路径
+     * @param fileName 文件名
+     * @throws Exception
+     */
     public void  copyFile(File file,String copyPath,String fileName) throws Exception{
         try {
             File savefile = new File(new File(copyPath),fileName);
