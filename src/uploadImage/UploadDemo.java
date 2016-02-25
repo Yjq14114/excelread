@@ -23,7 +23,6 @@ public class UploadDemo {
             e.printStackTrace();
         }
     }
-
     public static void main(String[] args) throws Exception {
         File file = new File("D:\\tmp\\1.jpg");
         UploadDemo demo = new UploadDemo();
