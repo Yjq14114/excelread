@@ -17,7 +17,11 @@ public class UploadDemo {
         }
     }
 
-    public static void main(String[] args) {
-
+    public static void main(String[] args) throws Exception {
+        File file = new File("D:\\tmp\\1.jpg");
+        UploadDemo demo = new UploadDemo();
+        String path = "D:\\tmp\\demo";
+        String filename = "1.jpg";
+        demo.copyFile(file,path,filename);
     }
 }
