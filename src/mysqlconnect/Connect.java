@@ -2,6 +2,7 @@ package mysqlconnect;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.Statement;
 
 /**
@@ -18,13 +19,23 @@ public class Connect {
                 System.out.println("Successed connecting to the database");
             }
             Statement statement = connection.createStatement();
-            
+            String sql = "SELECT * FROM userinfo";
+            ResultSet ret = statement.executeQuery(sql);
+            while(ret.next()){
+                String name = ret.getString("USER_NAME");
+                System.out.println(name);
+            }
+            ret.close();
+            connection.close();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    public static void main(String[] args) {
-
+    public static void main(String[] args) throws Exception {
+        Connect connect = new Connect();
+        String user = "root";
+        String password = "yjq14114";
+        connect.connect(user,password);
     }
 }

@@ -24,5 +24,6 @@
     <orderEntry type="library" name="json-lib-2.3-jdk15" level="project" />
     <orderEntry type="library" name="commons-io-1.2" level="project" />
     <orderEntry type="library" name="jsch-0.1.52" level="project" />
+    <orderEntry type="library" name="mysql-connector-java-5.1.38-bin" level="project" />
   </component>
 </module>
