@@ -10,6 +10,7 @@ import java.io.FileOutputStream;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.Vector;
 
 /**
  * Created by 佳琦 on 2016/2/26.
@@ -38,32 +39,13 @@ public class SftpDemo {
             channel.connect();
             sftp = (ChannelSftp) channel;
             System.out.println("连接sftp成功!!!!!!!");
-            List<Map<String,Object>> list = sftp.ls("/home/tmn/app/lctx/websystem/netmaintain/NetMaintainupload");
-            for(int i=0;i<list.size();i++){
-                String listName = list.get(i).toString();
-                if(listName.indexOf(".jpg")!=-1){
-                    String photoName = listName.substring(a.length(),listName.indexOf(".jpg")+4);
-                    sftp.cd("/home/tmn/app/lctx/websystem/netmaintain/NetMaintainupload");
-                    File jpgFile = new File(downloadPath+photoName);
-//  				File parent = jpgFile.getParentFile();
-//  				if(!parent.exists()&&parent!=null){
-//  					try {
-//  						parent.mkdirs();
-//  					} catch (Exception e) {
-//  						e.printStackTrace();
-//  					}
-//  				}
-//  				if(!jpgFile.exists()){
-//  					try {
-//  						jpgFile.createNewFile();
-//  					} catch (Exception e) {
-//  						e.printStackTrace();
-//  					}
-//  				}
-                    sftp.get(photoName,new FileOutputStream(jpgFile));
-                    System.out.println("路径"+downloadPath+"图片"+photoName);
-                }
-            }
+            String dwonFile = "759294-20160202102307.jpg";
+            String sftpPath = "/home/tmn/app/lctx/websystem/netmaintain/NetMaintain/upload/transPhoto";
+            String localPath = "D:\\tmp\\demo\\1.jpg";
+            sftp.cd(sftpPath);
+            File file = new File(localPath);
+            sftp.get(dwonFile,new FileOutputStream(file));
+            System.out.println("下载完毕");
         } catch (Exception e) {
             e.printStackTrace();
         }
