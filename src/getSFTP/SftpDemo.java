@@ -39,11 +39,11 @@ public class SftpDemo {
             channel.connect();
             sftp = (ChannelSftp) channel;
             System.out.println("连接sftp成功!!!!!!!");
-            String dwonFile = "759294-20160202102307.jpg";
-            String sftpPath = "/home/tmn/app/lctx/websystem/netmaintain/NetMaintain/upload/transPhoto";
+            String dwonFile = "528256-20150122132607.jpg";
+            String sftpPath = "/home/tmn/app/lctx/websystem/netmaintain/NetMaintainupload/transPhoto";
             String localPath = "D:\\tmp\\demo\\1.jpg";
-            sftp.cd(sftpPath);
             File file = new File(localPath);
+            sftp.cd(sftpPath);
             sftp.get(dwonFile,new FileOutputStream(file));
             System.out.println("下载完毕");
         } catch (Exception e) {
