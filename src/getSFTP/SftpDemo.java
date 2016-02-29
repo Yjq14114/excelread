@@ -21,15 +21,17 @@ public class SftpDemo {
         String downloadPath ="/upload/transPhoto";
   	/*连接sftp获得手机端巡检图片*/
         ChannelSftp sftp = null;
-        String userName = "tmn";
-        String host = "10.168.68.143";
+        String userName = "用户名";
+        String host = "服务器地址";
         int port = 22;
-        String password = "Tmn123!";
+        String password = "密码";
         String a = "-rw-rw-r--    1 tmn      tmn         25894 Nov 20 14:57 ";
+        FileOutputStream f = null;
+        Session sshSession =null;
         try {
             JSch jsch = new JSch();
             jsch.getSession(userName,host,port);
-            Session sshSession = jsch.getSession(userName,host,port);
+            sshSession = jsch.getSession(userName,host,port);
             sshSession.setPassword(password);
             Properties sshConfig = new Properties();
             sshConfig.put("StrictHostKeyChecking", "no");
@@ -39,15 +41,26 @@ public class SftpDemo {
             channel.connect();
             sftp = (ChannelSftp) channel;
             System.out.println("连接sftp成功!!!!!!!");
-            String dwonFile = "528256-20150122132607.jpg";
-            String sftpPath = "/home/tmn/app/lctx/websystem/netmaintain/NetMaintainupload/transPhoto";
+            String dwonFile = "999117-20160203111806.jpg";
+            String sftpPath = "/home/tmn/app/lctx/websystem/netmaintain/NetMaintain/upload/transPhoto";
             String localPath = "D:\\tmp\\demo\\1.jpg";
             File file = new File(localPath);
             sftp.cd(sftpPath);
-            sftp.get(dwonFile,new FileOutputStream(file));
+            f = new FileOutputStream(file);
+            sftp.get(dwonFile,f);
             System.out.println("下载完毕");
+
         } catch (Exception e) {
             e.printStackTrace();
+        }finally {
+            f.close();
+            sftp.quit();
+            if(sftp!=null){
+                sftp.disconnect();
+            }
+            if(sshSession!=null){
+                sshSession.disconnect();
+            }
         }
 
     }
