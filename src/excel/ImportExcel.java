@@ -14,7 +14,7 @@ public class ImportExcel {
     public void text(){
         ExcelIO excelIO = new ExcelIO();
         try {
-            InputStream is = new FileInputStream("D:\\年度考核需求相关文件\\年度考核模板\\年度考核基站及配套模板.xls");
+            InputStream is = new FileInputStream("D:\\年度考核需求相关文件\\年度考核基站及配套模板.xls");
             POIFSFileSystem poifs = new POIFSFileSystem(is);
             HSSFWorkbook workbook = new HSSFWorkbook(poifs);
             int numofsheet = workbook.getNumberOfSheets();
@@ -131,13 +131,5 @@ public class ImportExcel {
             }
             }
             Long endtime = System.currentTimeMillis();
-            System.out.println("全部耗时：" + (endtime - start) / 1000f + "秒！");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    public static void main(String[] args) {
-        ImportExcel im = new ImportExcel();
-        im.text();
-    }
+            System.out.println("全部耗时：" + (endtime - start) / 1000f + "秒！"); } catch (Exception e) { e.printStackTrace(); } } public static void main(String[] args) { ImportExcel im = new ImportExcel(); im.text(); }
 }
