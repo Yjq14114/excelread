@@ -25,3 +25,5 @@ out/production/excelread/time/FormatTime.class
 out/production/excelread/uploadImage/DwonLoadDemo.class
 out/production/excelread/uploadImage/UploadDemo.class
 web/WEB-INF/lib/poi-ooxml-3.7.jar
+*.class
+.idea/
